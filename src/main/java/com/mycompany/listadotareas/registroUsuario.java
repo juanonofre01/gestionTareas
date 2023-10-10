@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletContext;
 
-/**
- *
- * @author PC
- */
+
 public class registroUsuario {
     
     public static String verificarUsuario(int cedulaV, String contraseñaV, ServletContext context) throws IOException{

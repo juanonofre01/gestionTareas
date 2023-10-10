@@ -18,10 +18,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletContext;
 
-/**
- *
- * @author PC
- */
+
 public class Persistencia {
     
     public static void escribeArchivo(ArrayList<Usuario> misUsuarios, ServletContext context) throws FileNotFoundException {

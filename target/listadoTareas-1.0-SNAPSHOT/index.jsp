@@ -1,8 +1,5 @@
-<%-- 
-    Document   : index
-    Created on : 9/10/2023, 8:30:03 p. m.
-    Author     : PC
---%>
+
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
