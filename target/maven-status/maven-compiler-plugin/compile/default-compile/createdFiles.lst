@@ -1,0 +1,7 @@
+com\mycompany\listadotareas\registroUsuario.class
+com\mycompany\listadotareas\JAXRSConfiguration.class
+com\mycompany\listadotareas\Persistencia.class
+Servlets\SvRegistro.class
+com\mycompany\listadotareas\resources\JavaEE8Resource.class
+com\mycompany\listadotareas\Usuario.class
+Servlets\SvLogin.class

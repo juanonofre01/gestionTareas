@@ -1,0 +1,6 @@
+5,isa,null
+9,juan,null
+1086,lolito,null
+1087,trueno,null
+1090,isab,null
+15,angel,20
