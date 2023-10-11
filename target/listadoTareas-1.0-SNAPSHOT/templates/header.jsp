@@ -60,5 +60,25 @@
       background-color: hsla(0, 0%, 100%, 0.9) !important;
       backdrop-filter: saturate(200%) blur(25px);
     }
+    
+    .btn-purple-pastel {
+    background-color: #9c8cbb; /* Color morado pastel */
+    color: #fff; /* Texto en blanco o el color de texto deseado */
+    border-color: #9c8cbb; /* Color del borde, si es necesario */
+    }
+    
+    .bg-dark-pastel-blue {
+    background-color: rgba(70, 130, 180, 0.7); /* Azul pastel oscuro con una transparencia del 70% */
+    border-radius: 15px; /* Bordes redondeados de 15px */
+    }
+    
+    .rounded-input {
+    border-radius: 50px; /* Un valor alto de border-radius hace que el cuadro sea redondo */
+    }
+    
+    .custom-modal {
+    background-color: rgba(173, 216, 230, 0.7); /* Azul pastel transparente */
+    border-radius: 10px; /* Bordes redondeados de 10px */
+    }
   </style>
 

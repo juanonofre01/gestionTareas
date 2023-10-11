@@ -27,35 +27,34 @@
         <br>
         <!-- login -->
         <div class="login">
-        <div class="col-lg-8 mb-5 mb-lg-0 position-relative">
+        <div class="col-lg-4 mb-3 mb-lg-7 position-relative">
         <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
         <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
-        <div class="card bg-glass">
-            <div class="card-body px-4 py-5 px-md-5">
+        <div class="card bg-dark-pastel-blue px-1 py-5 px-md-4">
+            <div class="card-body px-1 py-5 px-md-4 text-center">
             
                 
               <!-- cedula -->
               <div class="form-outline mb-4">
-                <input type="text" class="input1" name="cedula" placeholder="Cédula" required>
-                <i class="fa-solid fa-envelope"></i>
+                <input type="text" class="input1 rounded-input" name="cedula" placeholder="Cédula" required>
               </div>
 
               
               <!-- contraseña -->
               <div class="form-outline mb-4">
-                <input type="password" class="input1" name="contrasenia" placeholder="Contraseña" required>
-                <i class="fa-solid fa-envelope" ></i>
+                <input type="password" class="input1 rounded-input" name="contrasenia" placeholder="Contraseña" required>
+                
               </div>
               
               
               <!-- boton para ingresar -->
-              <button type="submit" class="btn btn-primary btn-block mb-8">
-                Ingresar 
+              <button type="submit" class="btn btn-purple-pastel btn-block mb-8">
+                Ingresar
               </button>
               
               <!-- boton para registrarse -->
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <button type="button" class="btn btn-purple-pastel btn-block mb-8" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Registrarse aquí
                 </button>
               
@@ -120,7 +119,7 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <form action="SvRegistro" method="POST">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content custom-modal">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Registrate</h1>
                 </div>
@@ -146,8 +145,8 @@
                 </div>
                 <div class="modal-footer">
                     
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button type="button" class="btn btn-purple-pastel btn-block mb-8" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-purple-pastel btn-block mb-8">Registrarse</button>
                 </div>
             </div>
         </div>
@@ -157,26 +156,27 @@
 <!-- Modal -->
 <div class="modal fade" id="registrado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="registradoLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content custom-modal">
                 <div class="modal-body">
                     <h3>su registro fue exitoso :)</h3>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-purple-pastel btn-block mb-8" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
 </div>
 
+
 <!-- Modal -->
 <div class="modal fade" id="noRegistrado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="noRegistradoLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content custom-modal">
                 <div class="modal-body">
-                    <h3>Los Datos no son correctos :(</h3>
+                    <h3>Los Datos no son correctos porque ya estan en la base de datos :(</h3>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-purple-pastel btn-block mb-8" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

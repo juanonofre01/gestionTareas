@@ -11,7 +11,7 @@ import javax.servlet.ServletContext;
 
 public class registroUsuario {
     
-    public static String verificarUsuario(int cedulaV, String contraseñaV, ServletContext context) throws IOException{
+    public static String verificarcionU(int cedulaV, String contraseñaV, ServletContext context) throws IOException{
        
         //Creamos array que se llena con el archivo de texto
         ArrayList<Usuario> misUsuarios = new ArrayList<>(); 
@@ -32,7 +32,7 @@ public class registroUsuario {
     }
     
     
-    public static boolean encontrarUsuariosIg(int cedulaV, ServletContext context) throws IOException{
+    public static boolean encontrarU(int cedulaV, ServletContext context) throws IOException{
         
         ArrayList<Usuario> misUsuarios = new ArrayList<>(); 
         

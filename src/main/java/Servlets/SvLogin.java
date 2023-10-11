@@ -57,7 +57,7 @@ public class SvLogin extends HttpServlet {
         
         
         //Llamamos al metodo para verificar si coincide la cedula y contraseña con los usuarios guardados
-        String user=registroUsuario.verificarUsuario(cedula,contrasenia, context); 
+        String user=registroUsuario.verificarcionU(cedula,contrasenia, context); 
         
         
         // Verifica para saber si ingresa o no 

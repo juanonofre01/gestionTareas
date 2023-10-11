@@ -98,7 +98,7 @@ public class SvRegistro extends HttpServlet {
          * Verificar si el usuario ya existe, en caso de hacerlo no se añade y muestra mensaje.
          */
         
-        if(registroUsuario.encontrarUsuariosIg(cedula, context)){
+        if(registroUsuario.encontrarU(cedula, context)){
             /**
              * Si el usuario no existe, se añade.
              */ 
@@ -112,7 +112,7 @@ public class SvRegistro extends HttpServlet {
             String registrado = "si";
             request.setAttribute("registrado", registrado);
             
-        } else if(!registroUsuario.encontrarUsuariosIg(cedula, context)){
+        } else if(!registroUsuario.encontrarU(cedula, context)){
             /**
              * Si el usuario existe, no se añade.
              */ 
@@ -120,6 +120,7 @@ public class SvRegistro extends HttpServlet {
             //Enviamos bandera que indica que NO se añadio exitosamente
             String registrado = "no";
             request.setAttribute("registrado", registrado);
+            
         }
 
         // Redireccionar a la página de destino internamente en el servidor
