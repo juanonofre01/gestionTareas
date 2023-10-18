@@ -80,5 +80,10 @@
     background-color: rgba(173, 216, 230, 0.7); /* Azul pastel transparente */
     border-radius: 10px; /* Bordes redondeados de 10px */
     }
+    
+    .formulario {
+        float: left; /* Colocar el formulario a la izquierda */
+        margin-right: 20px; /* Agregar un margen derecho para separarlo de otros elementos */
+    }
   </style>
 

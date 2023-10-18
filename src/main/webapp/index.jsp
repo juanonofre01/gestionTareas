@@ -53,10 +53,15 @@
                 Ingresar
               </button>
               
-              <!-- boton para registrarse -->
-              <button type="button" class="btn btn-purple-pastel btn-block mb-8" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Registrarse aquí
-                </button>
+              <br><br>
+              
+                <div class="sign-up">
+                <p>No tienes una cuenta?</p>
+                
+                <!--Llama modal del registro-->
+                
+                    <a href="#" type="submit" class="btn btn-purple-pastel btn-block mb-8" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  >Regístrese aqui</a>
+                
               
             </div>
         </div>

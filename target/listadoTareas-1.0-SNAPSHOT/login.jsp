@@ -3,62 +3,28 @@
 <%@include file= "templates/header.jsp" %>
 <%String usuario=request.getParameter("usuarioI");%>
 
-<!-- Navegador de bootstrap -->
-
-
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" ><i class="fa-solid fa-list-check fa-xl"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="login.jsp?usuarioI=<%out.print(usuario);%>">Principal</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">1</a></li>
-            <li><a class="dropdown-item" href="#">2</a></li>
-            <li><a class="dropdown-item" href="#">3</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Buscar</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-
 
 <!-- Mensaje personalizado al ingresar -->
 
-    <div class="container p-4"> 
-        <div class="card text-center">
-            <div class="card-header">
-            </div>
+     
+        <div class="card text-center" >
+            
 
             <div class="card-body">
-              <h5>Bienvenido, <%out.println(request.getParameter("usuarioI"));%></h5>
-              <a href="index.jsp" class="btn btn-outline-success"> Cerrar sesion</a>
+              <h5><%out.println(request.getParameter("usuarioI"));%> Bienvenido a este programa</h5>
+              <a href="index.jsp" class="btn btn-outline-success"> Cerrar la sesion</a>
             </div>
 
-            <div class="card-footer text-body-secondary">
+            <div class="card-footer text-body">
             </div>
+              
         </div>
-    </div>
+    
 
     <!-- Tabla -->
     
   <div class="container p-4"> 
+      
     <div class="row">
         <div class="col-md-4">  <!-- clase division por 4 columnas -->
                <div class="card card-body">
@@ -74,11 +40,9 @@
                                 
                             <!-- Verificacion -->
                             <div class="valid-feedback">
-                              Se mira bien!
                             </div>
                             <!-- En caso de no tener nada -->
                             <div class="invalid-feedback">
-                              Introduce un id válido.
                             </div> 
                         </div>
                     </div>
@@ -92,11 +56,9 @@
                                 <label for="floatingInputValue">Titulo</label>
                             <!-- Verificacion -->
                             <div class="valid-feedback">
-                              Se mira bien!
                             </div>
                             <!-- En caso de no tener nada -->
                             <div class="invalid-feedback">
-                              Introduce un titulo válido.
                             </div> 
                         </formu></div>
                     </div>
@@ -111,11 +73,9 @@
                             <textarea class="form-control" name="descripcion" id="validationTextarea" placeholder="Required example textarea" required></textarea>
                             <!-- Verificacion -->
                             <div class="valid-feedback">
-                              Se mira bien!
                             </div>
                                 <!-- En caso de no tener nada -->
                             <div class="invalid-feedback">
-                              Introduce una descripcion válida.
                             </div> 
                         </div>    
                     </div>
@@ -128,15 +88,27 @@
                             <input type="date" class="form-control"  name="fecha" id="validationCustom05" required>
                             <!-- Verificacion -->
                             <div class="valid-feedback">
-                              Se mira bien!
                             </div>
                             <!-- En caso de no tener nada -->
                             <div class="invalid-feedback">
-                              Introduce una fecha válida.
                             </div> 
                         </div>
                     </div>
                     
+                    <div class="formulario">
+                    <form action="/action_page.php">
+                        <p>Elige la posición de tu trabajo</p>
+                          <input type="radio" id="Inicio" name="fav_language" value="Inicio">
+                          <label for="Inicio">Inicio</label><br>
+                          <input type="radio" id="Antes_de" name="fav_language" value="Antes_de">
+                          <label for="Antes_de">Antes de</label><br>
+                          <input type="radio" id="Despues_de" name="fav_language" value="Despues_de">
+                          <label for="Despues_de">Despues de</label><br>
+                          <input type="radio" id="Final" name="fav_language" value="Final">
+                          <label for="Final">Final</label>
+                        <br>  
+                    </form>
+                    </div>
                     
                     
                     <center>
@@ -169,10 +141,10 @@
             <!-- Contenido tabla -->
             <tbody>
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">0</th>
               <td>Trabajo</td>
               <td>Realizar trabajo</td>
-              <td>2/10/2023</td>
+              <td>2/8/2023</td>
               <td> <a href="#" class="btn btn-outline-success"><i class="fa-solid fa-pen-clip"></i></a>
                   <a href="#" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i> </a></td>
             </tr>
