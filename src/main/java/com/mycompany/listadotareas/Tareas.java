@@ -4,19 +4,23 @@
  */
 package com.mycompany.listadotareas;
 
+import java.io.Serializable;
+import java.util.Date;
+
 
 /**
  *
  * @author Sistemas
  */
 
-    public class Tareas{
+    public class Tareas implements Serializable{
     private int id;
     private String titulo;
     private String descripcion;
-    private int fecha;
+    private Date fecha;
 
-    public Tareas(int id, String titulo, String descripcion, int fecha) {
+    
+    public Tareas(int id, String titulo, String descripcion, Date fecha) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -50,11 +54,11 @@ package com.mycompany.listadotareas;
         this.descripcion = descripcion;
     }
 
-    public int getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(int Fecha) {
+    public void setFecha(Date Fecha) {
         this.fecha = fecha;
     }
     

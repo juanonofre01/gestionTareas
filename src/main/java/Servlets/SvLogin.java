@@ -4,9 +4,17 @@
  */
 package Servlets;
 
+import com.mycompany.listadotareas.ListadoTarea;
+import com.mycompany.listadotareas.Serializar;
+import com.mycompany.listadotareas.Tareas;
 import com.mycompany.listadotareas.registroUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,28 +29,89 @@ public class SvLogin extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SvLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SvLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
-
-
+    
+    ListadoTarea listaTareas = new ListadoTarea();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        
+        String nombre = request.getParameter("usuarioI");
+        
+        //Obtener el contexto del servlet
+        ServletContext context = getServletContext();
+        try {
+            listaTareas = Serializar.leerTareas(context);
+            if(listaTareas == null){
+                listaTareas = new ListadoTarea();
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SvLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        // Recibir los parámetros del formulario
+        int id = Integer.parseInt(request.getParameter("id"));
+        String titulo = request.getParameter("titulo");
+        String descripcion = request.getParameter("descripcion");
+        String fechaStr = request.getParameter("fecha");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = null;
+        String ubicar=request.getParameter("opcion");
+        String idUbi=request.getParameter("idEd");
+        String idUbi2=request.getParameter("idEd2");
+        
+        try {
+            fecha = sdf.parse(fechaStr);
+        } catch (ParseException e) {
+            e.printStackTrace(); // Manejo de error en caso de que la fecha no sea válida
+        };
+        
+        String an="";
+        
+        if(!listaTareas.existenId(id)){
+            Tareas nuevaTarea = new Tareas(id, titulo, descripcion, fecha);
+            switch(ubicar){
+                case "prin":
+                    listaTareas.Inicio(nuevaTarea);
+                    an="si";
+                    break;
+                case "ant":
+                    if(!idUbi.equals("")){
+                       listaTareas.AntesDe(Integer.parseInt(idUbi), nuevaTarea);
+                        an="si"; 
+                    } else{
+                        an="no";
+                    }
+                    break;
+                case "fin":
+                    listaTareas.Final(nuevaTarea);
+                    an="si";
+                    break;
+                case "desp":
+                    if(!idUbi2.equals("")){
+                       listaTareas.DespuesDe(Integer.parseInt(idUbi2), nuevaTarea);
+                        an="si"; 
+                    } else{
+                        an="no";
+                    }
+                    break;
+                    
+            }
+            Serializar.escribirArchivo(listaTareas, context);
+            
+            listaTareas.mostrarTareas();
+            
+        } else {
+            an="no";
+        }
+
+
+        // Redireccionar a la página de destino internamente en el servidor
+            // Redireccionar a la página de destino
+        response.sendRedirect("login.jsp?usuarioI="+nombre+"&add="+an);
+    }
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

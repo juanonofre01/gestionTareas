@@ -4,74 +4,111 @@
  */
 package Servlets;
 
+import com.mycompany.listadotareas.ListadoTarea;
+import com.mycompany.listadotareas.Serializar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sistemas
- */
+
 @WebServlet(name = "SvBotonesModEli", urlPatterns = {"/SvBotonesModEli"})
 public class SvBotonesModEli extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SvBotonesModEli</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SvBotonesModEli at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    ListadoTarea listaTareas = new ListadoTarea();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        //Obtener el contexto del servlet
+        ServletContext context = getServletContext();
+
+        
+        try {
+            listaTareas = Serializar.leerTareas(context);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SvBotonesModEli.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Obtiene el id a eliminar
+        String idEliminar = request.getParameter("id");
+
+        System.out.println(idEliminar);
+
+        int eliminar = Integer.parseInt(idEliminar);
+
+        listaTareas.eliminarTarea(eliminar);
+
+        Serializar.escribirArchivo(listaTareas, context);
+
+            // Redireccionar a la página de login
+            response.sendRedirect("login.jsp");
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+       ServletContext context = getServletContext();
+        String nombre = request.getParameter("usuarioI");
+        
+        try {
+            listaTareas = Serializar.leerTareas(context);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SvBotonesModEli.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String edit = request.getParameter("edit");
+        int id=Integer.parseInt( request.getParameter("idEd"));
+        
+        
+        switch(edit){
+            case"tit":
+                String titulo = request.getParameter("tituloNuev"); 
+                listaTareas.editarTitulo(id,titulo);              
+                break;
+            case "des":
+                String descripcion = request.getParameter("desNuev"); 
+                listaTareas.editarDescripcion(id, descripcion);
+                break;
+            case "fec":
+                String fechaStr = request.getParameter("fecNuev");
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha = null;
+
+                try {
+                    fecha = sdf.parse(fechaStr);
+                } catch (ParseException e) {
+                    e.printStackTrace(); // si la fecha no es válida
+                };
+                listaTareas.editarFecha(id, fecha);
+                break;
+        }
+        
+        //se modifica en la base de datos
+        Serializar.escribirArchivo(listaTareas, context);   
+        
+        response.sendRedirect("login.jsp?usuarioI="+nombre);
+
     }
 
     /**
