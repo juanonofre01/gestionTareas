@@ -84,7 +84,7 @@ public class SvRegistro extends HttpServlet {
 
         ArrayList<Usuario> misUsuarios = new ArrayList<>(); //Array a cargar con el txt
 
-        //Cargar la lista de perros desde un archivo
+        //Cargar la lista de usuario desde un archivo
         Persistencia.leeArchivo(misUsuarios, context);
 
         //Obtener datos del formulario enviados por POST

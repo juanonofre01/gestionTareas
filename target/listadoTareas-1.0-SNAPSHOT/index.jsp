@@ -25,7 +25,7 @@
       </div>
     
         <br>
-        <!-- login -->
+        <!-- ingreso -->
         <div class="login">
         <div class="col-lg-4 mb-3 mb-lg-7 position-relative">
         <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
@@ -58,7 +58,7 @@
                 <div class="sign-up">
                 <p>No tienes una cuenta?</p>
                 
-                <!--Llama modal del registro-->
+                <!--Modal del registro-->
                 
                     <a href="#" type="submit" class="btn btn-purple-pastel btn-block mb-8" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  >Regístrese aqui</a>
                 
@@ -72,7 +72,7 @@
 </form>
         
     
-<!-- modal con java Scrip -->
+<!-- java Scrip, modales -->
 <%
     //Llamamos variable de registro
     String registrado = (String) request.getAttribute("registrado");
@@ -91,7 +91,7 @@
         //si no se registra
        else if(registrado != null && registrado.equals("no")){
 %>
-    <!--modal de NO registrado -->
+    <!--Aparece modal de no registrado -->
     <script>
         $(document).ready(function () {
             usuarioNoReg();

@@ -48,8 +48,8 @@ public class SvBotonesModEli extends HttpServlet {
             Logger.getLogger(SvBotonesModEli.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Obtiene el id a eliminar
-        String idEliminar = request.getParameter("id");
+        
+        String idEliminar = request.getParameter("id"); // se obtiene el id a eliminar
 
         System.out.println(idEliminar);
 
@@ -94,7 +94,8 @@ public class SvBotonesModEli extends HttpServlet {
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date fecha = null;
-
+                    
+                //excepciones, fecha 
                 try {
                     fecha = sdf.parse(fechaStr);
                 } catch (ParseException e) {
@@ -104,7 +105,7 @@ public class SvBotonesModEli extends HttpServlet {
                 break;
         }
         
-        //se modifica en la base de datos
+        //se modifica
         Serializar.escribirArchivo(listaTareas, context);   
         
         response.sendRedirect("login.jsp?usuarioI="+nombre);

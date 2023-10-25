@@ -19,7 +19,7 @@ public class ListadoTarea implements Serializable{
             this.tarea = tarea;
         }
     }
-    
+    //funciones para organizar cada tarea 
     public void Inicio(Tareas tarea) {
         Nodo nodo = new Nodo(tarea);
         nodo.siguiente = cabeza;
@@ -29,13 +29,13 @@ public class ListadoTarea implements Serializable{
     public void Final(Tareas tarea) {
         Nodo nodo = new Nodo(tarea);
         if (cabeza == null) {
-            cabeza = nodo;  // Si la lista está vacía, el nuevo nodo se convierte en la cabeza
+            cabeza = nodo;  // Si la lista está vacía, el nodo se convierte en la cabeza
         } else {
             Nodo actual = cabeza;
             while (actual.siguiente != null) {
                 actual = actual.siguiente;
             }
-            actual.siguiente = nodo;  // Agregar el nuevo nodo al final
+            actual.siguiente = nodo;  // se agrega el nuevo nodo al final
         }
     }
 
@@ -55,16 +55,15 @@ public class ListadoTarea implements Serializable{
     
     public void AntesDe(int idAnterior, Tareas nuevaTarea) {
         Nodo nuevoNodo = new Nodo(nuevaTarea);
-
+        
+  // cuando la lista está vacía se ingresa la nueva tarea como la cabeza
         if (cabeza == null) {
-            // Si la lista está vacía, ingresa la nueva tarea como la cabeza
             cabeza = nuevoNodo;
             return;
         }
 
-        
+         // cuando la cabeza de la lista tiene el un id anterior ajusta la cabeza
         if (cabeza.tarea.getId() == idAnterior) {
-            // Si la cabeza de la lista tiene el ID anterior, ajusta la cabeza
             nuevoNodo.siguiente = cabeza;
             cabeza = nuevoNodo;
             return;
@@ -74,8 +73,8 @@ public class ListadoTarea implements Serializable{
         Nodo actual = cabeza.siguiente;
 
         while (actual != null) {
+             // ingresar la nueva tarea antes de la tarea
             if (actual.tarea.getId() == idAnterior) {
-                // ingresar la nueva tarea antes de la tarea
                 anterior.siguiente = nuevoNodo;
                 nuevoNodo.siguiente = actual;
                 return;
@@ -98,23 +97,22 @@ public class ListadoTarea implements Serializable{
 
     public void eliminarTarea(int id) {
         if (cabeza != null) {
-            // eliminación del primer elemento
             if (cabeza.tarea.getId() == id) {
                 Nodo primer = cabeza;
                 cabeza = cabeza.siguiente;
                 primer.siguiente = null;
-                return;  // Tarea eliminada
+                return;  // se ha eliminado la tarea
             }
 
             Nodo anterior = cabeza;
             Nodo actual = cabeza.siguiente;
-
+            
+               // Encontramos la tarea que se va a eliminar
             while (actual != null) {
                 if (actual.tarea.getId() == id) {
-                    // Encontramos la tarea que se va a eliminar
                     anterior.siguiente = actual.siguiente;
                     actual.siguiente = null;
-                    return;  // Tarea eliminada
+                    return;  
                 }
                 anterior = actual;
                 actual = actual.siguiente;
@@ -154,7 +152,7 @@ public class ListadoTarea implements Serializable{
             tablaHTML.append("</tr>");
             actual = actual.siguiente;
         }
-        tablaHTML.append("</table>"); //cerrar la tabla
+        tablaHTML.append("</table>"); 
 
         return tablaHTML.toString();
     }

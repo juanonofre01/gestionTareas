@@ -38,7 +38,7 @@ public class SvLogin extends HttpServlet {
         
         String nombre = request.getParameter("usuarioI");
         
-        //Obtener el contexto del servlet
+        //Obtener el contexto  y la comunicacion mediante el servlet
         ServletContext context = getServletContext();
         try {
             listaTareas = Serializar.leerTareas(context);
@@ -49,7 +49,7 @@ public class SvLogin extends HttpServlet {
             Logger.getLogger(SvLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Recibir los parámetros del formulario
+        // Recibir parámetros del formulario
         int id = Integer.parseInt(request.getParameter("id"));
         String titulo = request.getParameter("titulo");
         String descripcion = request.getParameter("descripcion");
@@ -107,7 +107,7 @@ public class SvLogin extends HttpServlet {
         }
 
 
-        // Redireccionar a la página de destino internamente en el servidor
+        // Redireccionar página de destino internamente en el servidor
             // Redireccionar a la página de destino
         response.sendRedirect("login.jsp?usuarioI="+nombre+"&add="+an);
     }

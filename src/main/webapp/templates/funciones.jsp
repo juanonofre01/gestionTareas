@@ -2,6 +2,8 @@
 BASADO:   https://getbootstrap.com/docs/5.3/forms/validation/   -->
 
 <script>
+    
+    // se utilizan los Toast elemento de control grafico
   function tareaSi() {
         toastr.options = {
         "closeButton": true,
@@ -44,24 +46,24 @@ BASADO:   https://getbootstrap.com/docs/5.3/forms/validation/   -->
         "hideMethod": "fadeOut"
     };
     
-    // Mostrar una notificación Toastr de error
+    // notificación Toastr de error
     toastr.error('intenta de nuevo!', 'No se añadio');
     }
     // Función de flecha que se ejecuta inmediatamente.
     (() => {
-        'use strict'; // Modo estricto para un código más seguro y eficiente.
+        'use strict';
 
         // Selecciona todos los elementos con la clase "needs-validation" y los almacena en la variable "forms".
         const forms = document.querySelectorAll('.needs-validation');
 
-        // Itera sobre cada formulario encontrado.
+        // realiza varias acciones sobre cada formulario encontrado.
         Array.from(forms).forEach(form => {
-            // Agrega un evento "submit" a cada formulario.
+            // Agrega un evento "submit" a los formularios.
             form.addEventListener('submit', event => {
                 // Verifica si el formulario no es válido.
                 if (!form.checkValidity()) {
                     event.preventDefault(); // Previene el envío del formulario si no es válido.
-                    event.stopPropagation(); // Detiene la propagación del evento para evitar otros manejadores de eventos.
+                    event.stopPropagation();
                 }
                 form.classList.add('was-validated'); // Agrega la clase "was-validated" al formulario.
             }, false);
@@ -75,10 +77,10 @@ BASADO:   https://getbootstrap.com/docs/5.3/forms/validation/   -->
      * Se dispara cuando se muestra el modal.
      */
     $('#eliminar').on('show.bs.modal', function (event) {
-        // Obtiene el botón que desencadenó el evento de mostrar el modal
+        // Obtiene el botón que realizo el evento de mostrar el modal
         var button = $(event.relatedTarget);
 
-        // Obtiene el id de la tarea desde el atributo 'data-nombre' del botón
+        // Obtiene el id de la tarea desde el atributo: 'data-nombre' del botón
         var idTarea = button.data('nombre');
 
         // Obtiene el modal actual
@@ -92,26 +94,26 @@ BASADO:   https://getbootstrap.com/docs/5.3/forms/validation/   -->
     });
     
      function eliminarTarea() {
-        // Obtiene el id de la tarea desde una variable previamente definida (id)
+        // Obtiene el id de la tarea (id) atributo
         var idTarea = id;
 
-        // Realiza una solicitud AJAX al servlet 'SvBotonesModEli' para eliminar la tarea
+        // Realiza una solicitud AJAX al servlet 'SvBotonesModEli' --elimar tarea 
         $.ajax({
             url: 'SvBotonesModEli?id=' + idTarea, // URL del servlet con el parámetro 'id' para la eliminación
-            method: 'GET', // Método HTTP utilizado para la solicitud (GET en este caso)
+            method: 'GET', 
             success: function (data) {
-                // En caso de éxito en la solicitud:
+               
 
-                // Cierra el modal de eliminación
+                // modal de eliminación para cerrar
                 $('#eliminar').modal('hide');
 
-                // Recarga la página actual para reflejar los cambios
+                // Recarga la página actual para hacer los cambios
                 location.reload();
             },
             error: function () {
                 // En caso de error en la solicitud:
 
-                // Registra un mensaje de error en la consola (para fines de depuración)
+                // Registra un mensaje de error en la consola
                 console.log('Error al eliminar el perro.');
             }
         });
@@ -121,30 +123,30 @@ BASADO:   https://getbootstrap.com/docs/5.3/forms/validation/   -->
     var button = $(event.relatedTarget);
     var idTarea = button.data('nombre');
     
-    // Mostrar el ID de la tarea en el modal
+    // se muestra el ID de la tarea en el modal
     $('#tareaId').text(idTarea);
 
     // También puedes almacenar el ID en una variable global si necesitas acceder a él en otros lugares del código.
     tareaId = idTarea;
 });
 
-// JavaScript para modal1
+// JavaScript para el modal1
 $('#editar').on('show.bs.modal', function (event) {
     // Al hacer clic en el botón, pasa la variable tareaId a modal2
     $('#btnPasarVariable').click(function () {
         $('#edTit').data('tareaId', tareaId);
-        $('#edTit').modal('show'); // Muestra modal2
+        $('#edTit').modal('show');
     });
     $('#btnPasarVariable1').click(function () {
         $('#edDes').data('tareaId', tareaId);
-        $('#edDes').modal('show'); // Muestra modal2
+        $('#edDes').modal('show'); 
     });
     $('#btnPasarVariable2').click(function () {
         $('#edFec').data('tareaId', tareaId);
-        $('#edFec').modal('show'); // Muestra modal2
+        $('#edFec').modal('show'); 
     });
 });
-// JavaScript para modal2
+// JavaScript
 $('#edTit').on('show.bs.modal', function (event) {
     // Obtiene la variable pasada desde modal1 y la muestra en modal2
     var tareaId = $('#edTit').data('tareaId');
@@ -158,7 +160,6 @@ $('#edTit').on('show.bs.modal', function (event) {
 });
 
 $('#edDes').on('show.bs.modal', function (event) {
-    // Obtiene la variable pasada desde modal1 y la muestra en modal2
     var tareaId = $('#edDes').data('tareaId');
     $('#idEditar').text(tareaId);
     

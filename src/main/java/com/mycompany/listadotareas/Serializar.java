@@ -39,10 +39,9 @@ public class Serializar {
 
         if (archivo.exists() && archivo.isFile()) {
             try (FileInputStream fis = new FileInputStream(archivo); ObjectInputStream ois = new ObjectInputStream(fis)) {
-                // Leer y deserializar la lista enlazada desde el archivo
                 listaTareas = (ListadoTarea) ois.readObject();
             } catch (EOFException e) {
-                // EOFException indica que el archivo estaba vacío
+                // indica que el archivo estaba vacia (EOFException) 
                 System.out.println("El archivo está vacío.");
             } catch (IOException e) {
                 System.out.println("Error al leer.");
